@@ -72,5 +72,6 @@
   },
   "optionalDependencies": {
     "@napi-rs/canvas": "^0.1.87"
-  }
+  },
+  "packageManager": "pnpm@10.33.2"
 }

@@ -1,11 +1,12 @@
 FROM node:24.5.0-slim AS builder
+RUN corepack enable
 
 RUN apt-get update && apt-get install -y python3 python3-pip sqlite3 && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/perplexica
 
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile --network-timeout 600000
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile --network-timeout 600000
 
 COPY tsconfig.json next.config.mjs next-env.d.ts postcss.config.js drizzle.config.ts tailwind.config.ts ./
 COPY src ./src
@@ -16,6 +17,7 @@ RUN mkdir -p /home/perplexica/data
 RUN yarn build
 
 FROM node:24.5.0-slim
+RUN corepack enable
 
 RUN apt-get update && apt-get install -y \
     python3-dev python3-babel python3-venv python-is-python3 \
