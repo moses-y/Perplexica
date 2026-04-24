@@ -148,13 +148,13 @@ If you prefer to build from source or need more control:
 4. Build the application:
 
    ```bash
-   npm run build
+   pnpm run build
    ```
 
 5. Start the application:
 
    ```bash
-   npm run start
+   pnpm run start
    ```
 
 6. Open your browser and navigate to http://localhost:3000 to complete the setup and configure your settings (API keys, models, SearxNG URL, etc.) in the setup screen.
